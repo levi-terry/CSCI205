@@ -21,6 +21,11 @@ int main(void) {
 
     printf("Enter arrow head width:\n");
     scanf("%d", &arrowHeadWidth);
+
+    while(arrowHeadWidth < arrowBaseWidth){
+        printf("Enter arrow head width:\n");
+        scanf("%d", &arrowHeadWidth);
+    }
     printf("\n");
 
     // Draw arrow base (height = 3, width = 2)
