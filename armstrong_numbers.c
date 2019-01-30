@@ -30,12 +30,14 @@ int main(void){
             digits += 1;
         }
 
+        // Calculate total of each digit raised to how many digits there are
         while(k != 0){
             remainder = k % 10;
             total += pow(remainder, digits);
             k /= 10;
         }
 
+        // Compare the total of the digits to the power with original number
         if(total == i){
             printf("%d ", i);
         }
