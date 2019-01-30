@@ -21,7 +21,7 @@ int main(void){
     scanf(" %s %s", userFirstName, userLastName);
 
     // Generate random values for dice
-    srand(time(0));
+        srand(time(0));
     for(int i = 0; i < 5; i++){
         dice[i] = rand() % 6 + 1;
     }

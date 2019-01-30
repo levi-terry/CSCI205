@@ -22,22 +22,25 @@ int main(void) {
     printf("Enter arrow head width:\n");
     scanf("%d", &arrowHeadWidth);
 
-    while(arrowHeadWidth < arrowBaseWidth){
+    while(arrowHeadWidth <= arrowBaseWidth){
         printf("Enter arrow head width:\n");
         scanf("%d", &arrowHeadWidth);
     }
     printf("\n");
 
-    // Draw arrow base (height = 3, width = 2)
-    printf( "**\n");
-    printf( "**\n");
-    printf( "**\n");
+    for(int i = 0; i < arrowBaseHeight; i++){
+        for(int j = 0; j < arrowBaseWidth; j++){
+            printf("*");
+        }
+        printf("\n");
+    }
 
-    // Draw arrow head (width = 4)
-    printf( "****\n");
-    printf( "***\n");
-    printf( "**\n");
-    printf( "*\n");
+    for(int i = arrowHeadWidth; i > 0; i--){
+        for(int j = i; j > 0; j--){
+            printf("*");
+        }
+        printf("\n");
+    }
 
     return 0;
 }
