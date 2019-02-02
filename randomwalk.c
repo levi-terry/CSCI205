@@ -20,8 +20,9 @@ int main(void){
     printf("Enter the number of times you would like to flip the coin:\n");
     scanf(" %d", &flipCount);
 
+    // Loop up to user specified number to generate random
     for(int i = 0; i < flipCount; i++){
-        flip = rand() % 2;
+        flip = rand() % 2;  // Random value between 0 and 1
         if(flip == 0){
             marker += 1;
             coinFlips[marker] += 1;
@@ -33,7 +34,14 @@ int main(void){
     }
 
     for(int i = 0; i < 11; i++){
-        printf("%d is : %d\n", i, coinFlips[i]);
+        if(coinFlips[i] == 0){
+            printf("\n");
+        }
+        else{
+            printf("%d is : %d\n", i, coinFlips[i]);
+        }
     }
+
+    return 0;
 
 }
