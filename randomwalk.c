@@ -25,10 +25,16 @@ int main(void){
         flip = rand() % 2;  // Random value between 0 and 1
         if(flip == 0){
             marker += 1;
+            if(marker == 11){  // Bounds checking to keep from going over 10
+                marker -= 1;
+            }
             coinFlips[marker] += 1;
         }
         else if(flip == 1){
             marker -= 1;
+            if(marker == -1){  // Bounds checking to keep from going under 0
+                marker += 1;
+            }
             coinFlips[marker] += 1;
         }
     }
