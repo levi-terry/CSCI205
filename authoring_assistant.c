@@ -41,7 +41,7 @@ int GetNumOfWords(const char userStr[]){
 void FixCapitalization(char userStr[]){
    int reading = 0;
    
-   for(int i = 0; strlen(userStr); i++){
+   for(int i = 0; i < strlen(userStr); i++){
       if(reading == 1){
          if(userStr[i] == '.' || userStr[i] == '!' || iscntrl(userStr[i])){
             reading = 0;
@@ -59,30 +59,63 @@ void FixCapitalization(char userStr[]){
    }
 }
 
+void ReplaceExclamation(char userStr[]){
+   for(int i = 0; i < strlen(userStr); i++){
+      if(userStr[i] == '!'){
+         userStr[i] = '.';
+      }
+   }
+}
+
+void ShortenSpace(char userStr[]){
+   for(int i = 0; i < strlen(userStr); i++){
+      if(userStr[i] == ' '){
+         while(userStr[i+1] == ' '){
+            if(userStr[i+1] == ' '){
+               for(int j = i + 1; j < strlen(userStr); j++){
+                  userStr[j] = userStr[j+1];
+               }
+            }
+         }
+      }
+   }
+}
+
 void PrintMenu(char* userStr){
    char userChoice;
    while (userChoice != 'q') {
-      printf("\nMENU\n");
+      printf("MENU\n");
       printf("c - Number of non-whitespace characters\n");
       printf("w - Number of words\n");
       printf("f - Fix capitalization\n");
       printf("r - Replace all !'s\n");
       printf("s - Shorten spaces\n");
       printf("q - Quit\n");
+      printf("\nChoose an option:\n");
       scanf(" %c", &userChoice);
       
       switch(userChoice){
          case 'c':
-            printf("\nNumber of non-whitespace characters: %d\n", GetNumOfNonWSCharacters(userStr));
+            printf("Number of non-whitespace characters: %d\n\n", GetNumOfNonWSCharacters(userStr));
             break;
             
          case 'w':
-            printf("\nNumber of words: %d\n", GetNumOfWords(userStr));
+            printf("Number of words: %d\n\n", GetNumOfWords(userStr));
             break;
             
          case 'f':
             FixCapitalization(userStr);
-            printf("\nEdited text: %s\n", userStr);
+            printf("Edited text: %s\n", userStr);
+            break;
+            
+         case 'r':
+            ReplaceExclamation(userStr);
+            printf("Edited text: %s\n", userStr);
+            break;
+            
+         case 's':
+            ShortenSpace(userStr);
+            printf("Edited text: %s\n", userStr);
             break;
             
          default:
