@@ -24,7 +24,7 @@ int GetNumOfWords(const char userStr[]){
    
    for(int i = 0; i < strlen(userStr); i++){
       if(reading == 1){
-         if(isblank(userStr[i]) || iscntrl(userStr[i])){
+         if(isblank(userStr[i]) || iscntrl(userStr[i+1])){
             reading = 0;
             count++;
          }
@@ -43,7 +43,7 @@ void FixCapitalization(char userStr[]){
    
    for(int i = 0; i < strlen(userStr); i++){
       if(reading == 1){
-         if(userStr[i] == '.' || userStr[i] == '!' || iscntrl(userStr[i])){
+         if(userStr[i] == '.' || userStr[i] == '!' || iscntrl(userStr[i+1])){
             reading = 0;
          }
       }
