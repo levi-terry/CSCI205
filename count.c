@@ -52,6 +52,6 @@ int main(void){
     printf("Consonants: %d\n", numCons);
     printf("Digits: %d\n", numDigits);
     printf("Spaces: %d\n", numSpaces);
-    
+
 }
 
