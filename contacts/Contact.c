@@ -4,17 +4,19 @@
 // Purpose: Function definitions for contact node
 
 #include <stdio.h>
+#include <string.h>
 #include "Contact.h"
 
-void InitContact(ContactNode* contact){
-    contact->contactName = NULL;
-    contact->contactPhoneNum = NULL;
-    contact->nextNodePtr = NULL;
+ContactNode CreateContact(char name, char phone){
+    ContactNode newContact;
+    strcpy(newContact.contactName, &name);
+    strcpy(newContact.contactPhoneNum, &phone);
+    newContact.nextNodePtr = NULL;
+
+    return newContact;
 }
 
-void PrintContact(ContactNode contact){
-    printf("%s", contact.contactName);
-    printf("%20s", contact.contactPhoneNum);
+void PrintContact(ContactNode* contact){
+    printf("%-20s", contact->contactName);
+    printf(" %s\n", contact->contactPhoneNum);
 }
-
-// TODO: More functions?

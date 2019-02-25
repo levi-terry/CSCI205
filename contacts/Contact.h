@@ -9,11 +9,10 @@
 typedef struct ContactNode_struct{
     char contactName[50];
     char contactPhoneNum[50];
-    struct ContactNode_struct* nextNodePtr;
+    struct ContactNode_struct *nextNodePtr;
 } ContactNode;
 
-void InitContact(ContactNode* contact);
+ContactNode CreateContact(char name, char phone);
 void PrintContact(ContactNode* contact);
-// TODO: More functions?
 
 #endif

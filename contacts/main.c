@@ -4,17 +4,18 @@
 // Purpose: Create a contact list.
 
 #include <stdio.h>
+#include <string.h>
 #include "Contact.h"
 #include "LLContacts.h"
 
 int main(void){
-    char userChoice = 'y';
+    char userChoice[5] = "y";
     char name[50];
     char phoneNumber[50];
-    ContactNode newContact;
-    // TODO: Determine how to initialize the struct and add contacts to it
+    llc contactList;
+    InitContactList(&contactList);
 
-    while(userChoice != 'n'){
+    while(strcmp(userChoice, "n") != 0){
         printf("Enter name:\n");
         fgets(name, 50, stdin);
         if((strlen(name) > 0) && (name[strlen(name) - 1] == '\n'))
@@ -24,10 +25,15 @@ int main(void){
         if((strlen(phoneNumber) > 0) && (phoneNumber[strlen(phoneNumber) - 1] == '\n'))
             phoneNumber[strlen(phoneNumber) - 1] = '\0';
 
-        printf("Enter another contact? (y/n)\n");
-        scanf("%c", &userChoice);
+        //Insert Contact
+        InsertContact(&contactList, name, phoneNumber);
+
+        printf("Enter another contact? (y/n):\n");
+        fgets(userChoice, 50, stdin);
+        if((strlen(userChoice) > 0) && (userChoice[strlen(userChoice) - 1] == '\n'))
+            userChoice[strlen(userChoice) - 1] = '\0';
+
     }
 
-    // TODO: Print out contact list
-
+    DisplayContactList(&contactList);
 }
