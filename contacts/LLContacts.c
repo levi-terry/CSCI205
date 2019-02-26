@@ -16,56 +16,41 @@ void InitContactList(llc* l){
 
 void InsertContact(llc* l, char* name, char* phone){
     ContactNode *newContact = (ContactNode*)malloc(sizeof(ContactNode));
-    //strcpy(*name, toupper(name);  // TODO: Convert string to uppercase
+    // Convert name to all uppercase
+    for(int i = 0; i < strlen(name); i++){
+        name[i] = toupper(name[i]);
+    }
     strcpy(newContact->contactName, name);
     strcpy(newContact->contactPhoneNum, phone);
-    ContactNode *ptr = (ContactNode*)malloc(sizeof(ContactNode));
-    int success = 0;
+    ContactNode *next = (ContactNode*)malloc(sizeof(ContactNode));
+    ContactNode *last = (ContactNode*)malloc(sizeof(ContactNode));
     if(l->size == 0){
         l->head = newContact;
     }
     else{
-        ptr = l->head;
-        if(ptr->nextNodePtr == NULL) {
-            if (ptr->contactName[0] < newContact->contactName[0]) {
-                ptr->nextNodePtr = newContact;
-            } else {
-                newContact->nextNodePtr = l->head;
-                l->head = newContact;
-            }
+        next = l->head;
+        if(next->contactName[0] > newContact->contactName[0]){
+            newContact->nextNodePtr = next;
+            l->head = newContact;
+        }
+        else if(next->nextNodePtr == NULL){
+            next->nextNodePtr = newContact;
         }
         else{
-            if(l->head->contactName[0] > newContact->contactName[0]){
-                newContact->nextNodePtr = l->head;
-                l->head = newContact;
-            }
-            else {
-                ptr = ptr->nextNodePtr;
-                if(ptr->nextNodePtr == NULL){
-                    if(ptr->contactName[0] < newContact->contactName[0]) {
-                        ptr->nextNodePtr = newContact;
-                        success = 1;
-                    }
-                    else{
-                        newContact->nextNodePtr = ptr;
-                        ptr = newContact;
-                        success = 1;
-                    }
+            last = next;
+            next = next->nextNodePtr;
+            while(next != NULL){
+                if(next->contactName[0] > newContact->contactName[0]){
+                    last->nextNodePtr = newContact;
+                    newContact->nextNodePtr = next;
+                    break;
                 }
-                if(success != 1){
-                    while (ptr->nextNodePtr != NULL) {
-                        if (ptr->contactName[0] > newContact->contactName[0]) {
-                            newContact->nextNodePtr = ptr;
-                            ptr = newContact;
-                            break;
-                        } else {
-                            if(ptr->nextNodePtr == NULL){
-                                ptr->nextNodePtr = newContact;
-                            }
-                            ptr = ptr->nextNodePtr;
-                        }
-                    }
+                if(next->nextNodePtr == NULL){
+                    next->nextNodePtr = newContact;
+                    break;
                 }
+                last = next;
+                next = next->nextNodePtr;
             }
         }
     }
@@ -77,7 +62,7 @@ void DisplayContactList(llc* l){
     ContactNode *ptr;
     ptr = l->head;
     while(ptr != NULL){
-        PrintContact(ptr);
+        PrintContact(*ptr);
         ptr = ptr->nextNodePtr;
     }
 }

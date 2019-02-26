@@ -13,6 +13,6 @@ typedef struct ContactNode_struct{
 } ContactNode;
 
 ContactNode CreateContact(char name, char phone);
-void PrintContact(ContactNode* contact);
+void PrintContact(ContactNode contact);
 
 #endif

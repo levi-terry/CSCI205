@@ -16,7 +16,7 @@ ContactNode CreateContact(char name, char phone){
     return newContact;
 }
 
-void PrintContact(ContactNode* contact){
-    printf("%-20s", contact->contactName);
-    printf(" %s\n", contact->contactPhoneNum);
+void PrintContact(ContactNode contact){
+    printf("%-20s", contact.contactName);
+    printf(" %s\n", contact.contactPhoneNum);
 }
