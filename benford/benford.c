@@ -20,7 +20,7 @@ int main(void){
     char number[20];
 
     // Open file myfile.txt
-    inFile = fopen("example1.txt", "r");
+    inFile = fopen("myfile.txt", "r");
     if(inFile == NULL){
         printf("Error opening myfile.txt\n");
         return -1;
@@ -59,25 +59,54 @@ int main(void){
         fscanf(inFile, "%s", number);
     }
 
-    printf("Total inputs: %d\n", totalInputs);
+    double p1 = (float)ones / totalInputs * 100;
+    double p2 = (float)twos / totalInputs * 100;
+    double p3 = (float)threes / totalInputs * 100;
+    double p4 = (float)fours / totalInputs * 100;
+    double p5 = (float)fives / totalInputs * 100;
+    double p6 = (float)sixes / totalInputs * 100;
+    double p7 = (float)sevens / totalInputs * 100;
+    double p8 = (float)eights / totalInputs * 100;
+    double p9 = (float)nines / totalInputs * 100;
+
+    printf("Number of inputs: %d\n", totalInputs);
     printf("Counts: %d,%d,%d,%d,%d,%d,%d,%d,%d\n", ones, twos, threes, fours, fives, sixes, sevens, eights, nines);
+    printf("%5.2lf%% ", p1);
     printf("1: ");
-    DisplayStars(ones);
+    DisplayStars((int)p1);
+    printf("%5.2lf%% ", p2);
     printf("2: ");
-    DisplayStars(twos);
+    DisplayStars((int)p2);
+    printf("%5.2lf%% ", p3);
     printf("3: ");
-    DisplayStars(threes);
+    DisplayStars((int)p3);
+    printf("%5.2lf%% ", p4);
     printf("4: ");
-    DisplayStars(fours);
+    DisplayStars((int)p4);
+    printf("%5.2lf%% ", p5);
     printf("5: ");
-    DisplayStars(fives);
+    DisplayStars((int)p5);
+    printf("%5.2lf%% ", p6);
     printf("6: ");
-    DisplayStars(sixes);
+    DisplayStars((int)p6);
+    printf("%5.2lf%% ", p7);
     printf("7: ");
-    DisplayStars(sevens);
+    DisplayStars((int)p7);
+    printf("%5.2lf%% ", p8);
     printf("8: ");
-    DisplayStars(eights);
+    DisplayStars((int)p8);
+    printf("%5.2lf%% ", p9);
     printf("9: ");
-    DisplayStars(nines);
+    DisplayStars((int)p9);
+
+    // Determine if dataset complies
+    printf("Benford's law? ");
+    if(28.0 <= p1 <= 38.0 && 15.0 <= p2 <= 21.0 && 10.0 <= p3 <= 13.0 && p4 < p3 && p5 < p4 && p6 < p5 && p7 < p6 && p8
+            < p7 && p9 < p8){
+        printf("Yes\n");
+    }
+    else{
+        printf("No\n");
+    }
 
     }
