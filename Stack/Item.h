@@ -3,8 +3,8 @@
 // Title: Item.h
 // Description: This program provides the definitions for the Item data type.
 
-#ifndef STACK_H
-#define STACK_H
+#ifndef ITEM_H
+#define ITEM_H
 
 typedef struct Item_struct{
     char word[50];
@@ -12,5 +12,6 @@ typedef struct Item_struct{
 } Item;
 
 Item CreateItem(char word);
+void PrintItem(Item item);
 
 #endif
