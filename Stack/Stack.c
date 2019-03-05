@@ -4,6 +4,7 @@
 // Description:
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "Stack.h"
 
@@ -13,7 +14,7 @@ void initialize(stack* s){
 }
 
 void push(stack* s,char* str){
-    Item *newItem;
+    Item *newItem = (Item*)malloc(sizeof(Item));
     strcpy(newItem->word, str);
     newItem->nextNodePtr = NULL;
     if(is_empty(s)){
@@ -32,11 +33,11 @@ void pop(stack* s, char* str){
 }
 
 void peek(stack* s, char* str){
-    //PrintItem(s->top);
+    strcpy(str, s->top->word);
 }
 
 bool is_empty(stack* s){
-    if(s){
+    if(s->top == NULL){
         return true;
     }
     return false;
@@ -47,10 +48,10 @@ int get_length(stack* s){
 }
 
 void display(stack* s){
-    Item *ptr;
-    ptr = s->top;
+    Item *ptr = s->top;
     while(ptr != NULL){
-        PrintItem(*ptr);
+        printf("%s ", ptr->word);
         ptr = ptr->nextNodePtr;
     }
+    printf("\n");
 }

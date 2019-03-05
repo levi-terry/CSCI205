@@ -24,7 +24,7 @@ int main()
     while (!feof(inFile)) {       
        if (strcmp(token,"-") != 0) {
          push(&s, token);
-       } 
+       }
        else {
          if (!is_empty(&s)) {
            pop(&s, token);

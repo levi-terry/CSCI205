@@ -11,7 +11,7 @@ typedef struct Item_struct{
     struct Item_struct *nextNodePtr;
 } Item;
 
-Item CreateItem(char word);
+//Item CreateItem(char word);
 void PrintItem(Item item);
 
 #endif
