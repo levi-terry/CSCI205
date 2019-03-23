@@ -1,0 +1,50 @@
+// Author: LDT
+// Date: 23MAR2019
+// Title: oddeven.cpp
+// Description: This program creates two integer vectors of
+// odd and even numbers from user input.
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+   // Variables
+   std::vector<int> odds;
+   std::vector<int> evens;
+   unsigned int numSize;
+   int tempVal;
+   unsigned int i; // for indexing purposes
+   
+   // Ask user to enter size of vector, assign to variable
+   cout << "Enter the size of vector:" << endl;
+   cin >> numSize;
+   
+   // Loop to ask user for numbers to fill vector
+   cout << "Enter the elements (integers) of the vector:" << endl;
+   for(i = 0; i < numSize; i++){
+      cin >> tempVal;
+      // Modulo operation to see if number is even
+      if(tempVal % 2 == 0){
+         evens.push_back(tempVal);
+      }
+      else{
+         odds.push_back(tempVal);
+      }
+   }
+   
+   // Print odd vector
+   cout << "The elements of the odd vector are:" << endl;
+   for(i = 0; i < odds.size(); i++){
+      cout << odds.at(i) << endl;
+   }
+   
+   // Print even vector
+   cout << "The elements of the even vector are:" << endl;
+   for(i = 0; i < evens.size(); i++){
+      cout << evens.at(i) << endl;
+   }   
+
+   return 0;
+}
