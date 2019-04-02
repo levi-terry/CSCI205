@@ -56,6 +56,11 @@ int getMonthDays(int month, int year){
     }
 }
 
+// Function to determine the start day
+int getStartDay(int month, int year){
+
+}
+
 // Main code
 int main(){
     // Variables
