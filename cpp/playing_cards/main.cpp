@@ -7,8 +7,11 @@
 #include <string>
 #include "Card.h"
 #include "Deck.h"
+#include <time.h>
 using namespace std;
+
 int main() {
+    srand(time(NULL));
     Deck d1;
     Card p1;
     Card p2;

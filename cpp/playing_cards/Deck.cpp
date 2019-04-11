@@ -8,7 +8,6 @@
 #include <vector>
 #include <iterator>
 #include <cstdlib>
-#include <time.h>
 #include "Deck.h"
 #include "Card.h"
 using namespace std;
@@ -88,8 +87,6 @@ void Deck::newDeck() {
 }
 
 Card Deck::dealCard(){
-    //TODO: Pick random int, swap that index in vector with back, pop the back
-    srand(time(NULL));
     int rando = rand() % mydeck.size();
     Card playerCard(mydeck.at(rando).getName(), mydeck.at(rando).getSuit(), mydeck.at(rando).getValue());
     std::swap(mydeck.at(rando), mydeck.back());
