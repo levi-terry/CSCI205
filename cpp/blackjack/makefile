@@ -11,7 +11,7 @@ Deck.o : Card.h Deck.h
 	g++ -Wall -c Deck.cpp
 
 Hand.o : Hand.h Card.h
-    g++ -Wall -c Hand.cpp
+	g++ -Wall -c Hand.cpp
 
 clean :
 	rm *.o playing_cards.exe
