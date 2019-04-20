@@ -8,14 +8,12 @@
 using namespace std;
 
 void Hand::addCard(Card newCard){
-    //TODO: Will need to call dealCard from deck in main.cpp
     myHand.push_back(newCard);
     handTotal += newCard.getValue();
 }
 
 // Set player's bet amount
 void Hand::bet(int betAmount){
-    //TODO: Will need to get this bet amount from main.cpp
     playerBet = betAmount;
     playerMoney -= betAmount;
 }
@@ -28,22 +26,38 @@ int Hand::getBet(){
 // If player won, add their bet to their money total.
 // If they lost, don't need to do anything since
 // their bet was already subtracted from their money.
-void Hand::winBet(int multiplier){
-    //TODO: Will need to set multiplier in main.cpp
+void Hand::winBet(float multiplier){
     playerMoney += playerBet * multiplier;
 }
 
 // Returns the total value of cards in player's hand.
-// Used for seeing if value >= 21.
+// Used for comparing player/dealer hands and seeing if value >= 21.
 int Hand::getHandTotal(){
-    //TODO: Will need logic to address changing value of Aces
+    if(handTotal > 21){
+        for(unsigned int i = 0; i < myHand.size(); i++){
+            if(myHand.at(i).getValue() == 11){
+                myHand.at(i).setValue(1);
+                handTotal -= 10;
+                break;
+            }
+        }
+    }
     return handTotal;
 }
 
 // Print player's hand by iterating through vector.
-void Hand::showHand(){
+void Hand::showPlayerHand(){
+    cout << "Player Hand:" << endl;
     // Iterate through vector myHand
-    for(int i = 0; i < myHand.size(); i++){
+    for(unsigned int i = 0; i < myHand.size(); i++){
+        myHand.at(i).printCard();
+    }
+}
+
+void Hand::showDealerHand(){
+    cout << "Dealer Hand:" << endl;
+    // Iterate through vector myHand
+    for(unsigned int i = 0; i < myHand.size(); i++){
         myHand.at(i).printCard();
     }
 }
@@ -59,11 +73,16 @@ void Hand::dealerFirstCard(){
 // Clear cards in vector myHand.
 void Hand::clearHand(){
     myHand.clear();
+    handTotal = 0;
 }
 
 // Print player's money.
 void Hand::showMoney(){
-    cout << "Balance: " << playerMoney << endl;
+    cout << "Player Money: $" << playerMoney << endl;
+}
+
+int Hand::getMoney(){
+    return playerMoney;
 }
 
 // Constructor for Hand class.

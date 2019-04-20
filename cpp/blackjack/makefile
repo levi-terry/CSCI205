@@ -14,5 +14,5 @@ Hand.o : Hand.h Card.h
 	g++ -Wall -c Hand.cpp
 
 clean :
-	rm *.o playing_cards.exe
+	rm *.o blackjack.exe
 	ls

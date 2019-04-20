@@ -89,9 +89,8 @@ void Deck::newDeck() {
 
 Card Deck::dealCard(){
     //TODO: Pick random int, swap that index in vector with back, pop the back
-    srand(time(NULL));
-    int rando = rand() % mydeck.size();
-    Card playerCard(mydeck.at(rando).getName(), myDeck.at(rando).getSuit(), myDeck.at(rando).getValue());
+    int rando = rand() % myDeck.size();
+    Card playerCard(myDeck.at(rando).getName(), myDeck.at(rando).getSuit(), myDeck.at(rando).getValue());
     std::swap(myDeck.at(rando), myDeck.back());
     myDeck.pop_back();
     return playerCard;
