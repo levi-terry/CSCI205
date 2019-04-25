@@ -3,15 +3,15 @@
 // Title: mydate.h
 // Description: Header file for Date class
 
-#include <string>
 #include <iostream>
+#include <string>
 
 #ifndef MYDATE_H
 #define MYDATE_H
 
 
 class Date{
-    friend std::ostream& operator<<(ostream& output, const Date& date);
+    friend std::ostream& operator<<(std::ostream& output, const Date& date);
 public:
     Date();
     Date(int month, int day, int year);
@@ -22,7 +22,8 @@ private:
     int month;
     int day;
     int year;
-    string getMonthName();
+    std::string monthName;
+    std::string getMonthName();
 };
 
 #endif //MYDATE_H

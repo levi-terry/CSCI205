@@ -3,40 +3,42 @@
 // Title: mydate.cpp
 // Description: Date class
 
-#include "mydate.h"
 #include <iostream>
-using namespace std;
+#include <string>
+#include "mydate.h"
 
 Date::Date() {
-    month = 1;
-    day = 1;
-    year = 1900;
+    this->month = 1;
+    this->day = 1;
+    this->year = 1900;
+    this->monthName = getMonthName();
 }
 
 Date::Date(int month, int day, int year) {
-    month = month;
-    day = day;
-    year = year;
+    this->month = month;
+    this->day = day;
+    this->year = year;
+    this->monthName = getMonthName();
 }
 
 Date& Date::operator++() {
-    day++;
+    this->day++;
     return *this;
 }
 
 Date Date::operator++(int) {
-    Date temp = *this;
-    ++*this;
-    return temp;
+    Date tempDate = *this;
+    this->day++;
+    return tempDate;
 }
 
 Date& Date::operator+=(int d) {
-    day += d;
+    this->day += d;
     return *this;
 }
 
-string Date::getMonthName() {
-    string months[] = {"January",
+std::string Date::getMonthName() {
+    std::string months[] = {"January",
                        "February",
                        "March",
                        "April",
@@ -52,6 +54,7 @@ string Date::getMonthName() {
     return months[month - 1];
 }
 
-std::ostream& operator<<(ostream& output, const Date& date){
-    return output << date.getMonthName() << " " << date.day << ", " << date.year;
+std::ostream& operator<<(std::ostream& output, const Date& date){
+    output << date.monthName << " " << date.day << ", " << date.year;
+    return output;
 }
